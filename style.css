@@ -1,8 +1,12 @@
+* {
+    box-sizing: border-box;
+    font-family: "Quantico", sans-serif;
+}
+
 body {
     margin: 0;
     height: 100vmax;
     background-color: #FBFBFB;
-    font-family: "Quantico", sans-serif;
 }
 
 header {
@@ -21,7 +25,6 @@ header nav a {
     color: black;
     font-size: 3vmax;
     font-weight: 700;
-    
 }
 
 main {
@@ -30,7 +33,7 @@ main {
     justify-content: center;
 }
 
-section {
+section.wrapper {
     display: grid;
     background-color: #FBFBFB;
     height: 70vmin;
@@ -61,6 +64,9 @@ section {
 .card-input {
     grid-area: card-input;
     background-color: #b8e0d4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .card-search {
@@ -76,4 +82,135 @@ section {
 .card-unfinished {
     grid-area: card-unfinished;
     background-color: #eac4d5;
+    overflow-y: auto;
+}
+
+.card-search,
+.card-finished, .card-unfinished {
+    padding-inline: 20px;
+}
+
+h1 {
+    font-weight: 400;
+    font-size: 20px;
+    margin-block: 1.5vmin 1vmin;
+}
+
+h1.insert-title {
+    font-size: 2.5vmax;
+    margin: 5vmin 0 3vmin 0;
+}
+
+form.form-input {
+    width: 70%;
+}
+
+input[type="text"] {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.form-input input:nth-of-type(3) {
+    width: 50%;
+}
+
+.form-input label:nth-of-type(3) {
+    display: block;
+}
+
+.form-input > input[type="checkbox"] {
+    width: 5%;
+    vertical-align: middle;
+}
+
+.form-input > input[type="submit"] {
+    margin-top: 15px;
+    width: 100%;
+    height: 2.5vmax;
+}
+
+.form-search > input[type="text"] {
+    width: 90%;
+    margin-right: 5px;
+}
+
+.form-search > input[type="submit"] {
+    width: auto;
+    text-align: center;
+    text-indent: 0;
+}
+
+input {
+    background-color: #FBFBFB;
+    border-style: solid;
+    border-radius: 30px 30px 30px 30px;
+    -webkit-border-radius: 30px 30px 30px 30px;
+    -moz-border-radius: 30px 30px 30px 30px;
+    height: 2.5vmax;
+    text-indent: 10px;
+}
+
+.card-books-finished, .card-books-unfinished {
+    border: 1.5px solid black;
+    width: 100%;
+    height: 17vmin;
+    border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    display: grid;
+    gap: 3px;
+    padding: 10px;
+    margin-bottom: 22px;
+}
+
+.card-books-unfinished {
+    grid-template: 
+    "h2 h2 h2 pict-book" 1fr
+    "h3 h3 h3 pict-book" 1fr
+    "btn-finished btn-finished btn-delete btn-delete" 1fr/
+    1fr 1fr 1fr 1fr;
+}
+
+.card-books-finished {
+    grid-template: 
+    "h2 h2 h2 pict-book" 1fr
+    "h3 h3 h3 pict-book" 1fr
+    "btn-unfinished btn-unfinished btn-delete btn-delete" 1fr/
+    1fr 1fr 1fr 1fr;
+}
+
+h2 {
+    font-weight: 400;
+    font-size: 16px;
+    margin-block: 0;
+    grid-area: h2;
+}
+
+h3 {
+    font-weight: 400;
+    font-size: 10px;
+    margin: 0 0 10px 0;
+    grid-area: h3;
+    color: rgb(70, 70, 70);
+}
+
+button[type="submit"] {
+    display: inline;
+    font-size: 9px;
+    border: 0.5px solid black;
+    border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+}
+
+button[type="submit"][class="btn-finished"] {
+   grid-area: btn-finished;
+}
+
+button[type="submit"][class="btn-unfinished"] {
+   grid-area: btn-unfinished;
+}
+
+button[type="submit"][class="btn-delete"] {
+   grid-area: btn-delete;
 }

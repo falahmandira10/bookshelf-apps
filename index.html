@@ -13,6 +13,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@300..700&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <header>
@@ -22,11 +24,67 @@
     </header>
 
     <main>
-      <section>
-        <div class="card-input"></div>
-        <div class="card-search"></div>
-        <div class="card-finished"></div>
-        <div class="card-unfinished"></div>
+      <section class="wrapper">
+        <section class="card-input">
+          <h1 class="insert-title">Insert New Book</h1>
+
+          <form class="form-input">
+            <label for="input-book">Title</label>
+            <input type="text" name="input-book" id="input-book" required>
+
+            <label for="author-book">Author</label>
+            <input type="text" name="author-book" id="author-book" required>
+
+            <label for="year-book">Released Year</label>
+            <input type="text" name="year-book" id="year-book" required>
+            
+            <input type="checkbox" name="finished-read" id="finished-read">
+            <label for="finished-read">Finished Reading</label>
+            
+            <input type="submit" name="submit-input" id="submit-input" value="Insert Book">
+          </form>
+        </section>
+        
+        <section class="card-search">
+          <h1>Search For Book</h1>
+
+          <form class="form-search">
+            <input type="text" name="search-book" id="search-book">
+
+            <input type="submit" name="search-submit" id="search-submit" value="🔍">
+          </form>
+        </section>
+        
+        <section class="card-unfinished">
+          <h1>Unfinished Book</h1>
+
+          <div class="card-books-unfinished">
+            <h2>Title</h2>
+            <h3>Author - Released Year</h3>
+            <i class="fa-solid fa-book fa-2xl pict-book"></i>
+            <button type="submit" class="btn-finished">Finished Read</button>
+            <button type="submit" class="btn-delete">Delete Book</button>
+          </div>
+          
+          <div class="card-books-unfinished">
+          </div>
+          
+        </section>
+        
+        <section class="card-finished">
+          <h1>Finished Book</h1>
+          
+          <div class="card-books-finished">
+            <h2>Title</h2>
+            <h3>Author - Released Yeaaaar</h3>
+            <i class="fa-solid fa-book fa-2xl pict-book"></i>
+            <button type="submit" class="btn-unfinished">Unfinished Read</button>
+            <button type="submit" class="btn-delete">Delete Book</button>
+          </div>
+  
+          <div class="card-books-finished">
+        </section>
+        
       </section>
     </main>
 
