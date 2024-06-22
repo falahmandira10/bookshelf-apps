@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    height: 100vmax;
+    background-color: #FBFBFB;
+    font-family: "Quantico", sans-serif;
+}
+
+header {
+    background-color: #d6eadf;
+    height: 50vmin;
+    display: flex;
+    justify-content: center;
+}
+
+header nav {
+    padding: 5vmin;
+}
+
+header nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 3vmax;
+    font-weight: 700;
+    
+}
+
+main {
+    display: flex;
+    height: 40vmin;
+    justify-content: center;
+}
+
+section {
+    display: grid;
+    background-color: #FBFBFB;
+    height: 70vmin;
+    width: 80vmax;
+    padding: 10px;
+    position: absolute;
+    top: 17.5vmin;
+    border-radius: 30px 30px 30px 30px;
+    -webkit-border-radius: 30px 30px 30px 30px;
+    -moz-border-radius: 30px 30px 30px 30px;
+    box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.45), -25px 0 20px -20px rgba(0, 0, 0, 0.45);
+    grid-template: 
+    "card-input card-input card-search card-search" 1fr
+    "card-input card-input card-unfinished card-finished" 1fr
+    "card-input card-input card-unfinished card-finished" 1fr
+    "card-input card-input card-unfinished card-finished" 1fr/
+    1fr 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+.card-input, .card-search,
+.card-finished, .card-unfinished {
+    border-radius: 20px 20px 20px 20px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    -moz-border-radius: 20px 20px 20px 20px;
+}
+
+.card-input {
+    grid-area: card-input;
+    background-color: #b8e0d4;
+}
+
+.card-search {
+    grid-area: card-search;
+    background-color: #eadfd6;
+}
+
+.card-finished {
+    grid-area: card-finished;
+    background-color: #c4d5ea;
+}
+
+.card-unfinished {
+    grid-area: card-unfinished;
+    background-color: #eac4d5;
+}
