@@ -30,16 +30,16 @@
 
           <form class="form-input">
             <label for="input-book">Title</label>
-            <input type="text" name="input-book" id="input-book" required>
+            <input type="text" name="input-book" id="input-book" value="" required>
 
             <label for="author-book">Author</label>
-            <input type="text" name="author-book" id="author-book" required>
+            <input type="text" name="author-book" id="author-book" value="" required>
 
             <label for="year-book">Released Year</label>
-            <input type="text" name="year-book" id="year-book" required>
+            <input type="number" name="year-book" id="year-book" value="" required>
             
-            <input type="checkbox" name="finished-read" id="finished-read">
-            <label for="finished-read">Finished Reading</label>
+            <input type="checkbox" name="finished-book" id="finished-book">
+            <label for="finished-book">Finished Reading</label>
             
             <input type="submit" name="submit-input" id="submit-input" value="Insert Book">
           </form>
@@ -57,32 +57,10 @@
         
         <section class="card-unfinished">
           <h1>Unfinished Book</h1>
-
-          <div class="card-books-unfinished">
-            <h2>Title</h2>
-            <h3>Author - Released Year</h3>
-            <i class="fa-solid fa-book fa-2xl pict-book"></i>
-            <button type="submit" class="btn-finished">Finished Read</button>
-            <button type="submit" class="btn-delete">Delete Book</button>
-          </div>
-          
-          <div class="card-books-unfinished">
-          </div>
-          
         </section>
         
         <section class="card-finished">
           <h1>Finished Book</h1>
-          
-          <div class="card-books-finished">
-            <h2>Title</h2>
-            <h3>Author - Released Yeaaaar</h3>
-            <i class="fa-solid fa-book fa-2xl pict-book"></i>
-            <button type="submit" class="btn-unfinished">Unfinished Read</button>
-            <button type="submit" class="btn-delete">Delete Book</button>
-          </div>
-  
-          <div class="card-books-finished">
         </section>
         
       </section>
