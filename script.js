@@ -7,13 +7,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const finishedKey = "FINISHED_KEY";
     const unfinishedKey = "UNFINISHED_KEY";
+    // localStorage.removeItem(finishedKey)
+    // localStorage.removeItem(unfinishedKey)
 
+    let arrBooks = []
     submitBtn.addEventListener("click", () => {
         if ((titleInp.value && authorInp.value && yearInp.value) != "") {
             console.log(`${titleInp.value}, ${authorInp.value}, ${typeof(Number(yearInp.value))}, ${typeof(finishedInp.checked)}`);
 
             const books = {
-                id: Date.now(),
+                id: generateId(),
                 title: titleInp.value,
                 author: authorInp.value,
                 year: Number(yearInp.value),
@@ -25,10 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 insertUnfinishedBooks(books);
             }
-            renderBook();
         }
        
     });
+
+    const generateId = () => Date.now();
 
     const getFinishedBooks = () => {
         if (typeof(Storage) !== "undefined") {
@@ -45,7 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const insertFinishedBooks = (book) => {
-        let arrBooks = []
         if (localStorage.getItem(finishedKey) !== null) {
             arrBooks = JSON.parse(localStorage.getItem(finishedKey));
         }
@@ -59,7 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const insertUnfinishedBooks = (book) => {
-        let arrBooks = []
         if (localStorage.getItem(unfinishedKey) !== null) {
             arrBooks = JSON.parse(localStorage.getItem(unfinishedKey));
         }
@@ -73,37 +75,67 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const renderFinishedBook = () => {
-        const arr = getFinishedBooks();
-        console.log(arr);
-        for (let book of arr) {
-            const parentSection = document.querySelector(".card-finished");
+        const bookShelf = getFinishedBooks();
+        console.log(bookShelf);
+        for (let book of bookShelf) {
+            const parentSection = document.querySelector('.card-finished');
             const divCard = document.createElement('div');
-            divCard.setAttribute("class", "card-books-finished");
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.setAttribute('type', 'submit');
+            deleteBtn.setAttribute('class', 'btn-delete');
+            deleteBtn.setAttribute('id', book.id);
+
+            const unfinishedBtn = document.createElement('button');
+            unfinishedBtn.setAttribute('type', 'submit');
+            unfinishedBtn.setAttribute('class', 'btn-unfinished');
+            unfinishedBtn.setAttribute('id', book.id);
+            
+            divCard.setAttribute('class', 'card-books-finished');
 
             divCard.innerHTML = '<h2>' + book.title + '<h2>';
             divCard.innerHTML += '<h3>' + book.author + ' - ' + book.year + '<h3>';
             divCard.innerHTML += '<i class="fa-solid fa-book fa-2xl pict-book"></i>';
-            divCard.innerHTML += '<button type="submit" class="btn-unfinished">Unfinished Read</button>';
-            divCard.innerHTML += `<button type="submit" class="btn-delete" id="${book.id}">Delete Button</button>`;
-            
+            divCard.appendChild(unfinishedBtn);
+            divCard.appendChild(deleteBtn);
+
             parentSection.appendChild(divCard);
 
         }
+
+        const deleteBtnn = document.querySelectorAll('.btn-delete');
+        deleteBtnn.forEach((btnDel, idx) => {
+            btnDel.addEventListener("click", () => {
+
+
+            });
+        });
     }
     
     const renderUnfinishedBook = () => {
-        const arr = getUnfinishedBooks();
-        console.log(arr);
-        for (let book of arr) {
+        const bookShelf = getUnfinishedBooks();
+        console.log(bookShelf);
+        for (let book of bookShelf) {
             const parentSection = document.querySelector(".card-unfinished");
             const divCard = document.createElement('div');
-            divCard.setAttribute("class", "card-books-unfinished");
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.setAttribute('type', 'submit');
+            deleteBtn.setAttribute('class', 'btn-delete');
+            deleteBtn.setAttribute('id', book.id);
+
+            const finishedBtn = document.createElement('button');
+            finishedBtn.setAttribute('type', 'submit');
+            finishedBtn.setAttribute('class', 'btn-finished');
+            finishedBtn.setAttribute('id', book.id);
+
+            divCard.setAttribute("class", "card-books-finished");
             
             divCard.innerHTML = '<h2>' + book.title + '<h2>';
             divCard.innerHTML += '<h3>' + book.author + ' - ' + book.year + '<h3>';
             divCard.innerHTML += '<i class="fa-solid fa-book fa-2xl pict-book"></i>';
-            divCard.innerHTML += '<button type="submit" class="btn-finished">Finished Read</button>';
-            divCard.innerHTML += `<button type="submit" class="btn-delete" id="${book.id}">Delete Button</button>`;
+            divCard.appendChild(finishedBtn);
+            divCard.appendChild(deleteBtn);
 
             parentSection.appendChild(divCard);
             
