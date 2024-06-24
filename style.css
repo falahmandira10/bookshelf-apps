@@ -211,7 +211,7 @@ h3 {
 
 button[type="submit"] {
     display: inline;
-    font-size: 9px;
+    font-size: 8px;
     border: 0.5px solid black;
     border-radius: 5px 5px 5px 5px;
     -webkit-border-radius: 5px 5px 5px 5px;
