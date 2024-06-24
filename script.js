@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const deleteBtnn = document.querySelectorAll('.btn-delete');
         deleteBtnn.forEach((btnDel, idx) => {
             btnDel.addEventListener("click", () => {
-
+                
 
             });
         });
