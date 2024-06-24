@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(Array.isArray(arrBooks));
         console.log(arrBooks);
         console.log(arrBooks);
-        // saveDataFinished();
+        // saveDataFinished(arrBooks);
     }
 
     const saveDataFinished = () => {
