@@ -124,12 +124,13 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(Array.isArray(arrBooks));
         console.log(arrBooks);
         console.log(arrBooks);
-        // saveDataFinished(arrBooks);
+        saveDataFinished(arrBooks);
     }
 
-    const saveDataFinished = () => {
+    const saveDataFinished = (data) => {
         if (typeof(Storage) !== 'undefined') {
-            localStorage.setItem(finishedKey, JSON.stringify(arrBooks));
+            console.log(data);
+            localStorage.setItem(finishedKey, JSON.stringify(data));
         }
     }
     
@@ -152,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
             finishedBtn.setAttribute('id', book.id);
             finishedBtn.innerText = "Finished Read"
 
-            divCard.setAttribute("class", "card-books-finished");
+            divCard.setAttribute("class", "card-books-unfinished");
             
             divCard.innerHTML = '<h2>' + book.title + '<h2>';
             divCard.innerHTML += '<h3>' + book.author + ' - ' + book.year + '<h3>';
@@ -160,8 +161,32 @@ document.addEventListener("DOMContentLoaded", () => {
             divCard.appendChild(finishedBtn);
             divCard.appendChild(deleteBtn);
 
-            parentSection.appendChild(divCard);1
+            parentSection.appendChild(divCard);
             
+        }
+
+        const deleteBtnn = document.querySelectorAll('.btn-delete');
+        deleteBtnn.forEach((btnDel, idx) => {
+            btnDel.addEventListener("click", () => {
+                btnDel.parentElement.remove();
+                removeUnfinishedBook(bookShelf, idx);
+            });
+        });
+    }
+
+    const removeUnfinishedBook = (arrBooks, idx) => {
+        arrBooks.splice(idx, 1);
+        
+        console.log(Array.isArray(arrBooks));
+        console.log(arrBooks);
+        console.log(arrBooks);
+        saveDataUnfinished(arrBooks);
+    }
+
+    const saveDataUnfinished = (data) => {
+        if (typeof(Storage) !== 'undefined') {
+            console.log(data);
+            localStorage.setItem(unfinishedKey, JSON.stringify(data));
         }
     }
 
