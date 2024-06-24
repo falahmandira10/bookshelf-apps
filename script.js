@@ -29,8 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 insertUnfinishedBooks(books);
             }
 
-            createFinishedBook();
-            createUnfinishedBook();
+            renderFinishedBook();
+            renderUnfinishedBook();
         }
        
     });
@@ -77,8 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem(unfinishedKey, JSON.stringify(arrBooks));
     };
 
-    const createFinishedBook = () => {
-        const bookShelf = getFinishedBooks();
+    const renderFinishedBook = () => {
+        let bookShelf = getFinishedBooks();
         console.log(bookShelf);
         for (let book of bookShelf) {
             const parentSection = document.querySelector('.card-finished');
@@ -113,22 +113,28 @@ document.addEventListener("DOMContentLoaded", () => {
         deleteBtnn.forEach((btnDel, idx) => {
             btnDel.addEventListener("click", () => {
                 btnDel.parentElement.remove();
-                removeFinishedBook(idx);
+                removeFinishedBook(bookShelf, idx);
             });
         });
     }
-
-    const removeFinishedBook = (idx) => {
+    
+    const removeFinishedBook = (arrBooks, idx) => {
         arrBooks.splice(idx, 1);
-        saveDataFinished();
+        
+        console.log(Array.isArray(arrBooks));
+        console.log(arrBooks);
+        console.log(arrBooks);
+        // saveDataFinished();
     }
 
     const saveDataFinished = () => {
-
+        if (typeof(Storage) !== 'undefined') {
+            localStorage.setItem(finishedKey, JSON.stringify(arrBooks));
+        }
     }
     
-    const createUnfinishedBook = () => {
-        const bookShelf = getUnfinishedBooks();
+    const renderUnfinishedBook = () => {
+        let bookShelf = getUnfinishedBooks();
         console.log(bookShelf);
         for (let book of bookShelf) {
             const parentSection = document.querySelector(".card-unfinished");
@@ -154,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
             divCard.appendChild(finishedBtn);
             divCard.appendChild(deleteBtn);
 
-            parentSection.appendChild(divCard);
+            parentSection.appendChild(divCard);1
             
         }
     }
@@ -162,8 +168,8 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("load", () => {
         if (typeof(Storage) !== "undefined") {
             if ((localStorage.getItem(finishedKey) || localStorage.getItem(unfinishedKey)) !== null) {
-                createFinishedBook();
-                createUnfinishedBook();
+                renderFinishedBook();
+                renderUnfinishedBook();
             }
         }
     });
