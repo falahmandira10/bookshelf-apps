@@ -28,6 +28,9 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 insertUnfinishedBooks(books);
             }
+
+            renderFinishedBook();
+            renderUnfinishedBook();
         }
        
     });
@@ -85,11 +88,14 @@ document.addEventListener("DOMContentLoaded", () => {
             deleteBtn.setAttribute('type', 'submit');
             deleteBtn.setAttribute('class', 'btn-delete');
             deleteBtn.setAttribute('id', book.id);
+            deleteBtn.innerText = "Delete Book"
 
             const unfinishedBtn = document.createElement('button');
             unfinishedBtn.setAttribute('type', 'submit');
             unfinishedBtn.setAttribute('class', 'btn-unfinished');
             unfinishedBtn.setAttribute('id', book.id);
+            unfinishedBtn.innerText = "Unfinished Read"
+
             
             divCard.setAttribute('class', 'card-books-finished');
 
@@ -106,7 +112,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const deleteBtnn = document.querySelectorAll('.btn-delete');
         deleteBtnn.forEach((btnDel, idx) => {
             btnDel.addEventListener("click", () => {
-                
+                console.log(bookShelf);
+
 
             });
         });
@@ -123,11 +130,13 @@ document.addEventListener("DOMContentLoaded", () => {
             deleteBtn.setAttribute('type', 'submit');
             deleteBtn.setAttribute('class', 'btn-delete');
             deleteBtn.setAttribute('id', book.id);
-
+            deleteBtn.innerText = "Delete Book"
+            
             const finishedBtn = document.createElement('button');
             finishedBtn.setAttribute('type', 'submit');
             finishedBtn.setAttribute('class', 'btn-finished');
             finishedBtn.setAttribute('id', book.id);
+            finishedBtn.innerText = "Finished Read"
 
             divCard.setAttribute("class", "card-books-finished");
             
@@ -144,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener("load", () => {
         if (typeof(Storage) !== "undefined") {
-            if ((localStorage.getItem(finishedKey) && localStorage.getItem(unfinishedKey)) !== null) {
+            if ((localStorage.getItem(finishedKey) || localStorage.getItem(unfinishedKey)) !== null) {
                 renderFinishedBook();
                 renderUnfinishedBook();
             }
