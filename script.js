@@ -80,6 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const renderFinishedBook = () => {
         let bookShelf = getFinishedBooks();
         console.log(bookShelf);
+        const flagFBook = false
         for (let book of bookShelf) {
             const parentSection = document.querySelector('.card-finished');
             const divCard = document.createElement('div');
@@ -99,44 +100,94 @@ document.addEventListener("DOMContentLoaded", () => {
             
             divCard.setAttribute('class', 'card-books-finished');
 
-            divCard.innerHTML = '<h2>' + book.title + '<h2>';
-            divCard.innerHTML += '<h3>' + book.author + ' - ' + book.year + '<h3>';
+            divCard.innerHTML = '<h2>' + book.title + '</h2>';
+            divCard.innerHTML += '<h3>' + book.author + ' - ' + book.year + '</h3>';
             divCard.innerHTML += '<i class="fa-solid fa-book fa-2xl pict-book"></i>';
             divCard.appendChild(unfinishedBtn);
             divCard.appendChild(deleteBtn);
 
             parentSection.appendChild(divCard);
-
         }
 
+        removeBook(bookShelf, flagFBook);
+    }
+
+    const removeBook = (bookShelf, flag) => {
         const deleteBtnn = document.querySelectorAll('.btn-delete');
         deleteBtnn.forEach((btnDel, idx) => {
             btnDel.addEventListener("click", () => {
-                btnDel.parentElement.remove();
-                removeFinishedBook(bookShelf, idx);
+                handleRemoveBook(btnDel, bookShelf, idx, flag);
             });
         });
     }
+
+    const handleRemoveBook = (btn, bookShelf, idx, flag) => {
+        btn.parentElement.remove();
+        bookShelf.splice(idx, 1);
+        console.log(Array.isArray(bookShelf));
+        console.log(bookShelf);
+        console.log(bookShelf);
     
-    const removeFinishedBook = (arrBooks, idx) => {
-        arrBooks.splice(idx, 1);
-        
-        console.log(Array.isArray(arrBooks));
-        console.log(arrBooks);
-        console.log(arrBooks);
-        saveDataFinished(arrBooks);
+        saveData(bookShelf, flag);
     }
 
-    const saveDataFinished = (data) => {
+    
+    const moveToFinished = (bookShelf) => {
+        const finishedBtnn = document.querySelectorAll('.btn-finished')
+        finishedBtnn.forEach((btnFin, idx) => {
+            btnFin.addEventListener("click", () => {
+                handleRemoveUBook(btnFin, bookShelf, idx);
+                
+                const parents = btnFin.parentElement;
+                console.log(parents);
+                
+                temp = [];
+                for (let child of parents.children) {
+                    if (child.innerText !== "") {
+                        temp.push(child.innerText);
+                    }
+                    
+                    if (temp[6] !== 'undefined' ) {
+                        temp.push(child.id);
+                        console.log(child.id);
+                    }
+                }
+                const auth_year = temp[2].split("-")
+                const auth = auth_year[0];
+                const years = Number(auth_year[1]);
+
+                const books = {
+                    id: temp[6],
+                    title: temp[0],
+                    author: auth,
+                    year: years,
+                    isComplete: true
+                }
+            
+                console.log("temp = ", temp)
+                console.log("books = ", books)
+               
+                insertFinishedBooks(books);
+                // renderFinishedBook();
+            })
+        })
+    }
+
+    const saveData = (data, flag) => {
         if (typeof(Storage) !== 'undefined') {
             console.log(data);
-            localStorage.setItem(finishedKey, JSON.stringify(data));
+            if (flag) {
+                localStorage.setItem(unfinishedKey, JSON.stringify(data));
+            } else {
+                localStorage.setItem(finishedKey, JSON.stringify(data));
+            }
         }
     }
     
     const renderUnfinishedBook = () => {
         let bookShelf = getUnfinishedBooks();
         console.log(bookShelf);
+        const flagUBook = true
         for (let book of bookShelf) {
             const parentSection = document.querySelector(".card-unfinished");
             const divCard = document.createElement('div');
@@ -155,39 +206,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
             divCard.setAttribute("class", "card-books-unfinished");
             
-            divCard.innerHTML = '<h2>' + book.title + '<h2>';
-            divCard.innerHTML += '<h3>' + book.author + ' - ' + book.year + '<h3>';
+            divCard.innerHTML = '<h2>' + book.title + '</h2>';
+            divCard.innerHTML += '<h3>' + book.author + ' - ' + book.year + '</h3>';
             divCard.innerHTML += '<i class="fa-solid fa-book fa-2xl pict-book"></i>';
             divCard.appendChild(finishedBtn);
             divCard.appendChild(deleteBtn);
 
             parentSection.appendChild(divCard);
-            
+            // console.log(divCard);
+
         }
 
-        const deleteBtnn = document.querySelectorAll('.btn-delete');
-        deleteBtnn.forEach((btnDel, idx) => {
-            btnDel.addEventListener("click", () => {
-                btnDel.parentElement.remove();
-                removeUnfinishedBook(bookShelf, idx);
-            });
-        });
-    }
-
-    const removeUnfinishedBook = (arrBooks, idx) => {
-        arrBooks.splice(idx, 1);
-        
-        console.log(Array.isArray(arrBooks));
-        console.log(arrBooks);
-        console.log(arrBooks);
-        saveDataUnfinished(arrBooks);
-    }
-
-    const saveDataUnfinished = (data) => {
-        if (typeof(Storage) !== 'undefined') {
-            console.log(data);
-            localStorage.setItem(unfinishedKey, JSON.stringify(data));
-        }
+        removeBook(bookShelf, flagUBook);
+        moveToFinished(bookShelf);
     }
 
     window.addEventListener("load", () => {

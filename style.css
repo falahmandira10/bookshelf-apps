@@ -50,7 +50,7 @@ section.wrapper {
     "card-input card-input card-unfinished card-finished" 1fr
     "card-input card-input card-unfinished card-finished" 1fr
     "card-input card-input card-unfinished card-finished" 1fr/
-    1fr 1fr 1fr 1fr;
+    1fr 0.8fr 1.1fr 1.1fr;
     gap: 10px;
 }
 
@@ -113,6 +113,10 @@ input[type="text"] {
 
 .form-input input:nth-of-type(3) {
     width: 50%;
+}
+
+.form-input label {
+    font-size: 14px;
 }
 
 .form-input label:nth-of-type(3) {
@@ -196,7 +200,7 @@ input {
 
 h2 {
     font-weight: 400;
-    font-size: 16px;
+    font-size: 14px;
     margin-block: 0;
     grid-area: h2;
 }
