@@ -11,7 +11,7 @@ body {
 
 header {
     background-color: #d6eadf;
-    height: 50vmin;
+    height: 50vh;
     display: flex;
     justify-content: center;
 }
@@ -36,7 +36,7 @@ main {
 section.wrapper {
     display: grid;
     background-color: #FBFBFB;
-    height: 70vmin;
+    height: 70vh;
     width: 80vmax;
     padding: 10px;
     position: absolute;
@@ -106,9 +106,9 @@ form.form-input {
     width: 70%;
 }
 
-input[type="text"] {
+.form-input input[type="text"] {
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 1.5vmin;
 }
 
 .form-input input:nth-of-type(3) {
@@ -133,9 +133,9 @@ input[type="text"] {
 }
 
 .form-input > input[type="submit"] {
-    margin-top: 15px;
+    margin-block: 15px;
     width: 100%;
-    height: 2.5vmax;
+    height: 3vmax;
     background-color: #a6daca;
     border: 1.5px solid black;
 }
@@ -148,7 +148,6 @@ input[type="text"] {
 
 .form-search > input[type="text"] {
     width: 90%;
-    margin-right: 5px;
 }
 
 .form-search > input[type="submit"] {
@@ -165,14 +164,14 @@ input {
     border-radius: 30px 30px 30px 30px;
     -webkit-border-radius: 30px 30px 30px 30px;
     -moz-border-radius: 30px 30px 30px 30px;
-    height: 2.5vmax;
+    height: 2.5vw;
     text-indent: 10px;
 }
 
 .card-books-finished, .card-books-unfinished {
     border: 1.5px solid black;
     width: 100%;
-    height: 17vmin;
+    height: 19vmin;
     border-radius: 10px 10px 10px 10px;
     -webkit-border-radius: 10px 10px 10px 10px;
     -moz-border-radius: 10px 10px 10px 10px;
@@ -186,7 +185,7 @@ input {
     grid-template: 
     "h2 h2 h2 pict-book" 1fr
     "h3 h3 h3 pict-book" 1fr
-    "btn-finished btn-finished btn-delete btn-delete" 1fr/
+    "btn-finished btn-finished btn-delete btn-delete" 0.4fr/
     1fr 1fr 1fr 1fr;
 }
 
@@ -194,7 +193,7 @@ input {
     grid-template: 
     "h2 h2 h2 pict-book" 1fr
     "h3 h3 h3 pict-book" 1fr
-    "btn-unfinished btn-unfinished btn-delete btn-delete" 1fr/
+    "btn-unfinished btn-unfinished btn-delete btn-delete" 0.4fr/
     1fr 1fr 1fr 1fr;
 }
 
@@ -250,3 +249,35 @@ button[type="submit"][class="btn-finished"]:hover  {
     cursor: pointer;
     background-color: #a79d68;
 }
+
+/* mobile screen */
+@media screen and (max-width: 767px) {
+    section.wrapper {
+        height: 100vmax;
+        width: 100%;
+        grid-template: 
+        "card-input card-input card-input card-input" 1fr
+        "card-search card-search card-search card-search" 0.5fr
+        "card-unfinished card-unfinished card-unfinished card-unfinished" 1fr
+        "card-finished card-finished card-finished card-finished" 1fr/
+        1fr 1fr 1fr 1fr;
+    }
+
+    h1.insert-title {
+        margin: 2vmin 0 1vmin 0;
+    }
+    
+    .form-input label {
+        font-size: 3vmin;
+    }
+
+    input {
+        height: 2.5vh;
+    }
+    
+    .form-search > input[type="text"] {
+        width: 85%;
+    }
+    
+}
+

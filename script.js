@@ -7,8 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const finishedKey = "FINISHED_KEY";
     const unfinishedKey = "UNFINISHED_KEY";
-    // localStorage.removeItem(finishedKey)
-    // localStorage.removeItem(unfinishedKey)
 
     const flagFinished = true;
     const flagUnfinished = false;
@@ -16,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let arrBooks = []
     submitBtn.addEventListener("click", () => {
         if ((titleInp.value && authorInp.value && yearInp.value) != "") {
-            console.log(`${titleInp.value}, ${authorInp.value}, ${typeof(Number(yearInp.value))}, ${typeof(finishedInp.checked)}`);
 
             const books = {
                 id: generateId(),
@@ -111,7 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             parentSection.appendChild(divCard);
         }
-
         removeBook(bookShelf, flagFinished);
         moveBook(bookShelf, flagFinished, flagUnfinished);
     }
@@ -128,9 +124,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const handleRemoveBook = (btn, bookShelf, idx, flag) => {
         btn.parentElement.remove();
         bookShelf.splice(idx, 1);
-        console.log(Array.isArray(bookShelf));
-        console.log(bookShelf);
-        console.log(bookShelf);
 
         saveData(bookShelf, flag);
     }
@@ -147,8 +140,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     handleRemoveBook(btnFin, bookShelf, idx, flagSource);
     
                     const parents = btnFin.parentElement;
-                    console.log(parents);
-                    
                     temp = [];
                     for (let child of parents.children) {
                         if (child.innerText !== "") {
@@ -157,7 +148,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         
                         if (temp[6] !== 'undefined' ) {
                             temp.push(child.id);
-                            console.log(child.id);
                         }
                     }
                     const auth_year = temp[2].split("-")
@@ -172,9 +162,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         isComplete: true
                     }
                 
-                    console.log("temp = ", temp)
-                    console.log("books = ", books)
-                   
                     insertBooks(books, flagDestination);
                 })
             })
@@ -187,8 +174,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     handleRemoveBook(btnFin, bookShelf, idx, flagSource);
     
                     const parents = btnFin.parentElement;
-                    console.log(parents);
-                    
                     temp = [];
                     for (let child of parents.children) {
                         if (child.innerText !== "") {
@@ -212,9 +197,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         isComplete: true
                     }
                 
-                    console.log("temp = ", temp)
-                    console.log("books = ", books)
-                   
                     insertBooks(books, flagDestination);
                 })
             })
@@ -223,7 +205,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const saveData = (data, flag) => {
         if (typeof(Storage) !== 'undefined') {
-            console.log(data);
             if (flag) {
                 localStorage.setItem(finishedKey, JSON.stringify(data));
             } else {
@@ -234,7 +215,6 @@ document.addEventListener("DOMContentLoaded", () => {
     
     const renderUnfinishedBook = () => {
         let bookShelf = getUnfinishedBooks();
-        console.log(bookShelf);
 
         for (let book of bookShelf) {
             const parentSection = document.querySelector(".card-unfinished");
@@ -261,8 +241,6 @@ document.addEventListener("DOMContentLoaded", () => {
             divCard.appendChild(deleteBtn);
 
             parentSection.appendChild(divCard);
-            // console.log(divCard);
-
         }
 
         removeBook(bookShelf, flagUnfinished);
