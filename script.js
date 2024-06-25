@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const flagFinished = true;
     const flagUnfinished = false;
 
-
     let arrBooks = []
     submitBtn.addEventListener("click", () => {
         if ((titleInp.value && authorInp.value && yearInp.value) != "") {
@@ -33,8 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 insertBooks(books, flagUnfinished);
             }
 
-            renderFinishedBook();
-            renderUnfinishedBook();
+            refreshPage();
         }
        
     });
@@ -80,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
             localStorage.setItem(unfinishedKey, JSON.stringify(arrBooks));
         }
-
+        refreshPage();
     };
 
     const renderFinishedBook = () => {
@@ -133,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(Array.isArray(bookShelf));
         console.log(bookShelf);
         console.log(bookShelf);
-        refreshPage();
+
         saveData(bookShelf, flag);
     }
 
@@ -142,43 +140,85 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     const moveBook = (bookShelf, flagSource, flagDestination) => {
-        const finishedBtnn = document.querySelectorAll('.btn-finished')
-        finishedBtnn.forEach((btnFin, idx) => {
-            btnFin.addEventListener("click", () => {
-                handleRemoveBook(btnFin, bookShelf, idx, flagSource);
-                
-                const parents = btnFin.parentElement;
-                console.log(parents);
-                
-                temp = [];
-                for (let child of parents.children) {
-                    if (child.innerText !== "") {
-                        temp.push(child.innerText);
-                    }
+        if (flagSource) {
+            const finishedBtnn = document.querySelectorAll('.btn-unfinished')
+            finishedBtnn.forEach((btnFin, idx) => {
+                btnFin.addEventListener("click", () => {
+                    handleRemoveBook(btnFin, bookShelf, idx, flagSource);
+    
+                    const parents = btnFin.parentElement;
+                    console.log(parents);
                     
-                    if (temp[6] !== 'undefined' ) {
-                        temp.push(child.id);
-                        console.log(child.id);
+                    temp = [];
+                    for (let child of parents.children) {
+                        if (child.innerText !== "") {
+                            temp.push(child.innerText);
+                        }
+                        
+                        if (temp[6] !== 'undefined' ) {
+                            temp.push(child.id);
+                            console.log(child.id);
+                        }
                     }
-                }
-                const auth_year = temp[2].split("-")
-                const auth = auth_year[0];
-                const years = Number(auth_year[1]);
-
-                const books = {
-                    id: temp[6],
-                    title: temp[0],
-                    author: auth,
-                    year: years,
-                    isComplete: true
-                }
-            
-                console.log("temp = ", temp)
-                console.log("books = ", books)
-               
-                insertBooks(books, flagDestination);
+                    const auth_year = temp[2].split("-")
+                    const auth = auth_year[0];
+                    const years = Number(auth_year[1]);
+    
+                    const books = {
+                        id: temp[6],
+                        title: temp[0],
+                        author: auth,
+                        year: years,
+                        isComplete: true
+                    }
+                
+                    console.log("temp = ", temp)
+                    console.log("books = ", books)
+                   
+                    insertBooks(books, flagDestination);
+                })
             })
-        })
+
+        } else {
+
+            const finishedBtnn = document.querySelectorAll('.btn-finished')
+            finishedBtnn.forEach((btnFin, idx) => {
+                btnFin.addEventListener("click", () => {
+                    handleRemoveBook(btnFin, bookShelf, idx, flagSource);
+    
+                    const parents = btnFin.parentElement;
+                    console.log(parents);
+                    
+                    temp = [];
+                    for (let child of parents.children) {
+                        if (child.innerText !== "") {
+                            temp.push(child.innerText);
+                        }
+                        
+                        if (temp[6] !== 'undefined' ) {
+                            temp.push(child.id);
+                            console.log(child.id);
+                        }
+                    }
+                    const auth_year = temp[2].split("-")
+                    const auth = auth_year[0];
+                    const years = Number(auth_year[1]);
+    
+                    const books = {
+                        id: temp[6],
+                        title: temp[0],
+                        author: auth,
+                        year: years,
+                        isComplete: true
+                    }
+                
+                    console.log("temp = ", temp)
+                    console.log("books = ", books)
+                   
+                    insertBooks(books, flagDestination);
+                })
+            })
+        }
     }
 
     const saveData = (data, flag) => {
@@ -195,7 +235,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const renderUnfinishedBook = () => {
         let bookShelf = getUnfinishedBooks();
         console.log(bookShelf);
-        const flagUBook = true
+
         for (let book of bookShelf) {
             const parentSection = document.querySelector(".card-unfinished");
             const divCard = document.createElement('div');
@@ -225,7 +265,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
 
-        removeBook(bookShelf, flagUBook);
+        removeBook(bookShelf, flagUnfinished);
         moveBook(bookShelf, flagUnfinished, flagFinished);
     }
 
