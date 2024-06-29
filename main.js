@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const submitBtn =  document.querySelector("#submit-input");
-    const titleInp = document.getElementById("input-book");
+    const titleInp = document.getElementById("bookFormTitle");
     const authorInp = document.getElementById("author-book");
     const yearInp = document.getElementById("year-book");
     const finishedInp = document.getElementById("finished-book");
@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         title: temp[0],
                         author: auth,
                         year: years,
-                        isComplete: true
+                        isComplete: false
                     }
                 
                     insertBooks(books, flagDestination);
