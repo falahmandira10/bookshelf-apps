@@ -1,28 +1,20 @@
-<hr>
-
 # Introduction
-<hr>
 Proyek ini merupakan tugas akhir dari kursus "Belajar Membuat Front-End Web untuk Pemula" yang diselenggarakan oleh Dicoding sebagai bagian dari program beasiswa DBS Foundation. Proyek ini sepenuhnya dikembangkan menggunakan Vanilla JavaScript dengan memanfaatkan localStorage yang akan menyimpan data pengguna secara lokal di browser, sehingga tidak hilang meskipun tab ditutup atau halaman di-refresh.
 
 <br>
 
-<hr>
 
-### References Folder
-<hr>
+[!References Folder]
 Folder referensi yang disediakan Dicoding menjadi titik awal yang menarik. Meski tak sepenuhnya saya gunakan, saya justru terdorong untuk lebih berkreasi dan menemukan cara lain dalam menyelesaikan proyek akhir ini.
 
-<br>
 
-<hr>
+<br>
 
 ### Link
 <hr>
 Link Referensi Projek [Dicoding](https://bookshelfappsdicoding.netlify.app/).
 
 <br>
-
-<hr>
 
 ### Note
 <hr>
