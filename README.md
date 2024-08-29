@@ -10,7 +10,6 @@ Proyek ini merupakan tugas akhir dari kursus "Belajar Membuat Front-End Web untu
 Link Referensi Projek [Dicoding](https://bookshelfappsdicoding.netlify.app/).
 <br>
 
-### Note
-Saya menyadari masih ada beberapa aspek dalam proyek ini yang perlu disempurnakan. Misalnya, saya belum sepenuhnya (lupa) memanfaatkan atribut data-* untuk mengelola elemen HTML dengan lebih efisien melalui fitur element.dataset.* di JavaScript, seperti yang diimplementasikan pada template projek dari Dicoding di references/bookshelf-app-starter-project/index.html. Selain itu, fitur pencarian buku, yang merupakan fitur opsional dalam proyek ini, belum selesai, dan desain responsif web ini masih perlu dioptimalkan.
 
-Namun demikian, proyek ini telah memenuhi seluruh kriteria penilaian dalam kursus "Belajar Membuat Front-End Web untuk Pemula". Ke depannya, saya berencana untuk terus melakukan perbaikan dan penyempurnaan secara bertahap.
+> [!Note]
+> Bookshelf app (aplikasi rak buku) ini hanya dapat menampung hingga 5 buku per rak, mengingat kapasitas memori masing-masing domain di localStorage hanya berkisar antara 10-15 MB.

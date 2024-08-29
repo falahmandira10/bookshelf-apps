@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const submitBtn =  document.querySelector("#submit-input");
-    const titleInp = document.getElementById("bookFormTitle");
+    const titleInp = document.getElementById("input-book");
     const authorInp = document.getElementById("author-book");
     const yearInp = document.getElementById("year-book");
     const finishedInp = document.getElementById("finished-book");
@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const handleRemoveBook = (btn, bookShelf, idx, flag) => {
         btn.parentElement.remove();
         bookShelf.splice(idx, 1);
-
+        refreshPage()
         saveData(bookShelf, flag);
     }
 
