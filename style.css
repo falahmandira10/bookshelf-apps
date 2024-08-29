@@ -250,6 +250,27 @@ button[type="submit"][class="btn-finished"]:hover  {
     background-color: #a79d68;
 }
 
+h6 {
+    color: rgb(14, 14, 14);
+    margin: 5px 0;
+    font-size: 0.8vmax;
+    text-align: center;
+    /* background-color: powderblue; */
+}
+
+.social-media {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    color: rgb(14, 14, 14);
+    /* background-color: #ff0844; */
+}
+
+.social-media a {
+    /* text-decoration: none; */
+    color: rgb(14, 14, 14);
+}
+
 /* mobile screen */
 @media screen and (max-width: 767px) {
     section.wrapper {
