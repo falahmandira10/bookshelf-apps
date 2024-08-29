@@ -4,8 +4,8 @@ Proyek ini merupakan tugas akhir dari kursus "Belajar Membuat Front-End Web untu
 <br>
 
 
-[!References Folder]
-Folder referensi yang disediakan Dicoding menjadi titik awal yang menarik. Meski tak sepenuhnya saya gunakan, saya justru terdorong untuk lebih berkreasi dan menemukan cara lain dalam menyelesaikan proyek akhir ini.
+> [!References Folder]
+> Folder referensi yang disediakan Dicoding menjadi titik awal yang menarik. Meski tak sepenuhnya saya gunakan, saya justru terdorong untuk lebih berkreasi dan menemukan cara lain dalam menyelesaikan proyek akhir ini.
 
 
 <br>
