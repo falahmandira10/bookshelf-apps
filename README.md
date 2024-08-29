@@ -12,4 +12,4 @@ Link Referensi Projek [Dicoding](https://bookshelfappsdicoding.netlify.app/).
 
 
 > [!Note]
-> Bookshelf app (aplikasi rak buku) ini hanya dapat menampung hingga 5 buku per rak, mengingat kapasitas memori masing-masing domain di localStorage hanya berkisar antara 10-15 MB. Selain itu, fitur search book belum saya implementasikan.
+> Bookshelf app (aplikasi rak buku) ini hanya dapat menampung hingga 5 buku per rak, mengingat kapasitas memori masing-masing domain di localStorage hanya berkisar antara 10-15 MB. Selain itu, fitur search book (fitur opsional) belum saya implementasikan.
